@@ -2,8 +2,6 @@ from telnetlib import IP
 from tkinter import *
 #rom naoqi import ALProxy
 
-IP = input()
-
 
 root = Tk()
 # Mesures de la interficia grafica del equip
