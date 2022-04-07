@@ -20,9 +20,9 @@ def Xarxa():
 
 def Parlar():
     #IP = iptxt.get("1.0", "end-1c")
-	l = "172.16.252.90"
+	l = Xarxa()
 
-	tts = ALProxy("ALTextToSpeech",IP, 9559)
+	tts = ALProxy("ALTextToSpeech",l, 9559)
 	print(type(l))
 	txt = inputtxt.get("1.0", "end-1c")
 	tts.say("Hello, world!")
