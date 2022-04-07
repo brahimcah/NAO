@@ -2,6 +2,7 @@ from telnetlib import IP
 from Tkinter import *
 from naoqi import ALProxy
 import unicodedata
+# -*- encoding: UTF-8 -*-
 
 
 root = Tk()
