@@ -1,3 +1,4 @@
+	# -*- encoding: UTF-8 -*-
 from telnetlib import IP
 from Tkinter import *
 from naoqi import ALProxy
@@ -32,7 +33,7 @@ def Parlar():
     
 
 def Japan():
-	## -*- encoding: UTF-8 -*-
+
 	l = Xarxa()
 	ls = l.encode('ascii','replsce')
 	print(type(ls))
@@ -40,6 +41,8 @@ def Japan():
 	tts = ALProxy("ALTextToSpeech",ls, 9559)
 	tts.setLanguage("Japanese")
 	tts.say("こんにちは")
+	tts.setLanguage("Spanish")
+
 
 
 l = Label(text = "INDICA LA IP DEL ROBOT NAO")
@@ -71,8 +74,8 @@ parla = Button(root, height = 2,
 
 prlJpn = Button(root, height = 2,
 				width = 20,
-				text ="parla",
-				command = lambda:[Japan())
+				text ="Parlar amb Japones",
+				command = lambda:Japan())
 
 
 l.pack()
