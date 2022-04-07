@@ -19,8 +19,8 @@ root.title(" NAO - INS PLA DE L'ESTANY ")
    # return IP
 
 def Parlar():
-    
-	tts = ALProxy("ALTextToSpeech", IP , 9559)
+    #IP = iptxt.get("1.0", "end-1c")
+	tts = ALProxy("ALTextToSpeech", "172.16.252.90" , 9559)
 	txt = inputtxt.get("1.0", "end-1c")
 	tts.say("Hello, world!")
     
