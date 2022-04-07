@@ -38,7 +38,12 @@ iptxt = Text(root, height = 1,
 				width = 25,
 				bg = "light yellow")
 
-				
+				## -*- encoding: UTF-8 -*-
+##from naoqi import ALProxy
+##tts = ALProxy("ALTextToSpeech", "172.16.251.86", 9559)
+##tts.say("hola a tots!")
+##tts.setLanguage("Japanese")
+##tts.say("こんにちは")
 
 mv = Label(text = "MOVIMENTS")
 bracdret = Button(root, height = 2,
