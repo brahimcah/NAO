@@ -27,7 +27,8 @@ def Parlar():
 	tts = ALProxy("ALTextToSpeech",ls, 9559)
 	
 	txt = inputtxt.get("1.0", "end-1c")
-	tts.say("Hello, world!")
+	strtxt = txt.encode('ascii','replsce')
+	tts.say(strtxt)
     
 
 
