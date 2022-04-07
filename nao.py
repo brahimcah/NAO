@@ -2,7 +2,6 @@ from telnetlib import IP
 from Tkinter import *
 from naoqi import ALProxy
 import unicodedata
-# -*- encoding: UTF-8 -*-
 
 
 root = Tk()
@@ -25,7 +24,7 @@ def Parlar():
     #IP = iptxt.get("1.0", "end-1c")
 	l = Xarxa()
 
-	tts = ALProxy("ALTextToSpeech",ls, 9559)
+	tts = ALProxy("ALTextToSpeech",l.encode("ascii", "ignore"), 9559)
 	print(type(l))
 	txt = inputtxt.get("1.0", "end-1c")
 	tts.say("Hello, world!")
