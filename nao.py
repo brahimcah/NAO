@@ -23,7 +23,7 @@ iptxt = Text(root, height = 1,
 mv = Label(text = "MOVIMENTS")
 bracdret = Button(root, height = 2,
 				width = 20,
-				text ="AIXECAR EL BRAÇ",
+				text ="AIXECAR EL BRAC",
 				command = lambda:Take_input())
 
 prl = Label(text = "Indica que vols que digui el robot")
