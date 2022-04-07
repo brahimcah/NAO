@@ -1,6 +1,6 @@
 from telnetlib import IP
-from Tkinter import *
-from naoqi import ALProxy
+from tkinter import *
+#rom naoqi import ALProxy
 
 
 
@@ -14,12 +14,19 @@ def Take_input():
 	IP = inputtxt.get("1.0", "end-1c")
 	print(IP)   
 
-def dirIP(self):
-	self.IP = iptxt.get("1.0", "end-1c")
+
+
+
+
+def Xarxa():
+    IP = iptxt.get("1.0", "end-1c")
+    print(IP)
+    return IP
 
 def Parlar():
+   
     
-	tts = ALProxy("ALTextToSpeech", IP , 9559)
+	tts = ALProxy("ALTextToSpeech", Xarxa() , 9559)
 	txt = inputtxt.get("1.0", "end-1c")
 	tts.say("Hello, world!")
     
@@ -46,7 +53,7 @@ inputtxt = Text(root, height = 1,
 parla = Button(root, height = 2,
 				width = 20,
 				text ="parla",
-				command = lambda:Parlar())
+				command = lambda:[Parlar(),Xarxa()])
 
 l.pack()
 iptxt.pack()
