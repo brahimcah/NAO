@@ -1,15 +1,5 @@
-class Person:
-    name = ''
-    school = ''
-     
-    def print_name(self):
-        print self.name
-         
-    def print_school(selfs):
-        print self.school
-     
-jorge = Person()
-jorge.name = 'Jorge'
-jorge.school = 'Universidad de la vida'
-jorge.print_name()
-jorge.print_school()
+import unicodedata
+
+stringVal = '192.168.1.1'
+
+print(unicodedata.normalize('NFKD', l).encode('ascii', 'replace').decode())

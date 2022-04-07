@@ -1,6 +1,7 @@
 from telnetlib import IP
 from Tkinter import *
 from naoqi import ALProxy
+import unicodedata
 
 
 root = Tk()
@@ -16,13 +17,14 @@ root.title(" NAO - INS PLA DE L'ESTANY ")
 def Xarxa():
     IP = iptxt.get("1.0", "end")
     print(type(IP))
-    return IP
+    IPS = unicodedata.normalize('NFKD', IP).encode('ascii', 'replace').decode()
+    return IPS
 
 def Parlar():
     #IP = iptxt.get("1.0", "end-1c")
 	l = Xarxa()
 
-	tts = ALProxy("ALTextToSpeech",l, 9559)
+	tts = ALProxy("ALTextToSpeech",ls, 9559)
 	print(type(l))
 	txt = inputtxt.get("1.0", "end-1c")
 	tts.say("Hello, world!")
