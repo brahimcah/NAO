@@ -14,8 +14,8 @@ def Take_input():
 	IP = inputtxt.get("1.0", "end-1c")
 	print(IP)   
 
-def dirIP():
-	IP = iptxt.get("1.0", "end-1c")
+def dirIP(self):
+	self.IP = iptxt.get("1.0", "end-1c")
 
 def Parlar():
     
