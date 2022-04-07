@@ -1,6 +1,6 @@
 from telnetlib import IP
-from tkinter import *
-#rom naoqi import ALProxy
+from Tkinter import *
+from naoqi import ALProxy
 
 
 root = Tk()
@@ -13,14 +13,17 @@ root.title(" NAO - INS PLA DE L'ESTANY ")
 
 
 
-#def Xarxa():
- #   IP = iptxt.get("1.0", "end-1c")
-  #  print(IP)
-   # return IP
+def Xarxa():
+    IP = iptxt.get("1.0", "end-1c")
+    print(type(IP))
+    return IP
 
 def Parlar():
     #IP = iptxt.get("1.0", "end-1c")
-	tts = ALProxy("ALTextToSpeech", "172.16.252.90" , 9559)
+	l = "172.16.252.90"
+
+	tts = ALProxy("ALTextToSpeech",IP, 9559)
+	print(type(l))
 	txt = inputtxt.get("1.0", "end-1c")
 	tts.say("Hello, world!")
     
