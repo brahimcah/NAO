@@ -1,5 +1,5 @@
 from telnetlib import IP
-from tkinter import *
+from Tkinter import *
 from naoqi import ALProxy
 
 
@@ -14,15 +14,15 @@ def Take_input():
 	IP = inputtxt.get("1.0", "end-1c")
 	print(IP)   
 
+def dirIP():
+	IP = iptxt.get("1.0", "end-1c")
+
 def Parlar():
-    IP = iptxt.get("1.0", "end-1c")
-    txt = inputtxt.get("1.0", "end-1c")
-	print(IP)   
-    motion = ALProxy("ALMotion", IP , 9559)
-    tts    = ALProxy("ALTextToSpeech", IP, 9559)
-    motion.moveInit()
-    motion.post.moveTo(0.5, 0, 0)
-    tts.say("I'm walking")
+    
+	tts = ALProxy("ALTextToSpeech", IP , 9559)
+	txt = inputtxt.get("1.0", "end-1c")
+	tts.say("Hello, world!")
+    
 
 
 	
@@ -30,6 +30,8 @@ l = Label(text = "INDICA LA IP DEL ROBOT NAO")
 iptxt = Text(root, height = 1,
 				width = 25,
 				bg = "light yellow")
+
+				
 
 mv = Label(text = "MOVIMENTS")
 bracdret = Button(root, height = 2,
