@@ -31,14 +31,23 @@ def Parlar():
 	tts.say(strtxt)
     
 
+def Japan():
+	## -*- encoding: UTF-8 -*-
+	l = Xarxa()
+	ls = l.encode('ascii','replsce')
+	print(type(ls))
+	print(ls)
+	tts = ALProxy("ALTextToSpeech",ls, 9559)
+	tts.setLanguage("Japanese")
+	tts.say("こんにちは")
 
-	
+
 l = Label(text = "INDICA LA IP DEL ROBOT NAO")
 iptxt = Text(root, height = 1,
 				width = 25,
 				bg = "light yellow")
 
-				## -*- encoding: UTF-8 -*-
+				
 ##from naoqi import ALProxy
 ##tts = ALProxy("ALTextToSpeech", "172.16.251.86", 9559)
 ##tts.say("hola a tots!")
@@ -60,6 +69,11 @@ parla = Button(root, height = 2,
 				text ="parla",
 				command = lambda:[Parlar(),Xarxa()])
 
+prlJpn = Button(root, height = 2,
+				width = 20,
+				text ="parla",
+				command = lambda:[Japan())
+
 
 l.pack()
 iptxt.pack()
@@ -68,5 +82,6 @@ bracdret.pack()
 prl.pack()
 inputtxt.pack()
 parla.pack()
+prlJpn.pack()
 
 mainloop()
