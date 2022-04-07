@@ -1,6 +1,5 @@
 from telnetlib import IP
 from tkinter import *
-from netaddr import IPNetwork, IPAddress 
 
 
 root = Tk()
@@ -17,18 +16,31 @@ def Take_input():
 
 	
 l = Label(text = "INDICA LA IP DEL ROBOT NAO")
-inputtxt = Text(root, height = 1,
+iptxt = Text(root, height = 1,
 				width = 25,
 				bg = "light yellow")
 
-
-Display = Button(root, height = 2,
+mv = Label(text = "MOVIMENTS")
+bracdret = Button(root, height = 2,
 				width = 20,
 				text ="AIXECAR EL BRAÇ",
 				command = lambda:Take_input())
 
+prl = Label(text = "Indica que vols que digui el robot")
+inputtxt = Text(root, height = 1,
+				width = 25,
+				bg = "light green")
+parla = Button(root, height = 2,
+				width = 20,
+				text ="parla",
+				command = lambda:Take_input())
+
 l.pack()
+iptxt.pack()
+mv.pack()
+bracdret.pack()
+prl.pack()
 inputtxt.pack()
-Display.pack()
+parla.pack()
 
 mainloop()
