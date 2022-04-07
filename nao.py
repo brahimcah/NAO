@@ -2,6 +2,7 @@ from telnetlib import IP
 from tkinter import *
 #rom naoqi import ALProxy
 
+IP = input()
 
 
 root = Tk()
@@ -10,23 +11,18 @@ root.geometry("300x300")
 # Nom del programa
 root.title(" NAO - INS PLA DE L'ESTANY ")
 
-def Take_input():
-	IP = inputtxt.get("1.0", "end-1c")
-	print(IP)   
 
 
 
 
-
-def Xarxa():
-    IP = iptxt.get("1.0", "end-1c")
-    print(IP)
-    return IP
+#def Xarxa():
+ #   IP = iptxt.get("1.0", "end-1c")
+  #  print(IP)
+   # return IP
 
 def Parlar():
-   
     
-	tts = ALProxy("ALTextToSpeech", Xarxa() , 9559)
+	tts = ALProxy("ALTextToSpeech", IP , 9559)
 	txt = inputtxt.get("1.0", "end-1c")
 	tts.say("Hello, world!")
     
@@ -54,6 +50,7 @@ parla = Button(root, height = 2,
 				width = 20,
 				text ="parla",
 				command = lambda:[Parlar(),Xarxa()])
+
 
 l.pack()
 iptxt.pack()
