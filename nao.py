@@ -14,7 +14,7 @@ root.title(" NAO - INS PLA DE L'ESTANY ")
 
 
 def Xarxa():
-    IP = iptxt.get("1.0", "end-1c")
+    IP = iptxt.get("1.0", "end")
     print(type(IP))
     return IP
 
