@@ -7,7 +7,7 @@ import unicodedata
 
 root = Tk()
 # Mesures de la interficia grafica del equip
-root.geometry("300x300")
+root.geometry("300x600")
 # Nom del programa
 root.title(" NAO - INS PLA DE L'ESTANY ")
 

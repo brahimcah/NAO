@@ -1,5 +1,6 @@
-import unicodedata
+fichero = open('hola.txt')
+print(fichero.readline())
+print(fichero.readline())
 
-stringVal = '192.168.1.1'
-
-print(unicodedata.normalize('NFKD', l).encode('ascii', 'replace').decode())
+fichero = l.encode('ascii','replsce')
+print(type(ls))
