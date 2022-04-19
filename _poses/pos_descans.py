@@ -23,7 +23,8 @@ def main(session):
     # Wake up robot
     motion_service.wakeUp()
 
-    #
+    # Send robot to Stand Init
+    posture_service.goToPosture("StandInit", 0.5)
 
     # Go to rest position
     motion_service.rest()

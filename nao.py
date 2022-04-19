@@ -36,7 +36,7 @@ def Japan():
 	ip = iptxt.get("1.0", "end-1c")
 	with open('.\data\ip.txt', 'w') as f:
 		f.write(ip)
-	execfile(".\_talk\japan.py")
+	execfile(".\_pose\pos_sentat.py")
 	
 
 
