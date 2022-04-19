@@ -33,18 +33,8 @@ def Parlar():
     
 
 def Japan():
-
-	l = Xarxa()
-	ls = l.encode('ascii','replsce')
-	print(type(ls))
-	print(ls)
-	motion = ALProxy("ALMotion", ls, 9559)
-	tts = ALProxy("ALTextToSpeech",ls, 9559)
-	motion.moveInit()
-	motion.post.moveTo(0.5, 0, 0)
-	tts.setLanguage("Japanese")
-	tts.say("こんにちは")
-	tts.setLanguage("Spanish")
+	execfile(".\talk\japan.py")
+	
 
 
 def equilibri():
