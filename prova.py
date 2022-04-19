@@ -1,45 +1,56 @@
-#! /usr/bin/env python
-# -*- encoding: UTF-8 -*-
+#-*- coding: utf-8 -*-
 
-"""Example: PoseInit - Small example to make Nao go to an initial position."""
+import socket
+import os
+import threading
 
-import qi
-import argparse
-import sys
-
-
-def main(session):
-    """
-    PoseInit: Small example to make Nao go to an initial position.
-    """
-    # Get the services ALMotion & ALRobotPosture.
-
-    motion_service = session.service("ALMotion")
-    posture_service = session.service("ALRobotPosture")
-
-    # Wake up robot
-    motion_service.wakeUp()
-
-    # Send robot to Stand Init
-    posture_service.goToPosture("StandInit", 0.5)
-
-    # Go to rest position
-    motion_service.rest()
+import urllib.parse
+import ctypes
+import datetime
 
 
-if __name__ == "__main__":
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--ip", type=str, default="172.16.252.98",
-                        help="Robot IP address. On robot or Local Naoqi: use '127.0.0.1'.")
-    parser.add_argument("--port", type=int, default=9559,
-                        help="Naoqi port number")
+local_ip = '172.16.252.96' # Configure la IP local vinculada al servidor de socket
+local_port = 4321 # Configure el puerto local vinculado al servidor de socket
 
-    args = parser.parse_args()
-    session = qi.Session()
-    try:
-        session.connect("tcp://" + args.ip + ":" + str(args.port))
-    except RuntimeError:
-        print ("Can't connect to Naoqi at ip \"" + args.ip + "\" on port " + str(args.port) +".\n"
-               "Please check your script arguments. Run with -h option for help.")
-        sys.exit(1)
-    main(session)
+server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+server.bind((local_ip, local_port))
+server.listen(5)
+
+ # Solo responda a tareas de computadoras en la lista blanca
+ # clave () de admin_filter
+admin_filter = {}
+admin_filter['172.19.1.30'] = {'exe'}
+admin_filter['127.0.0.1'] = {'exe'}
+
+
+print('White list:' + str(admin_filter))
+print('Server bind on %s:%s' % (local_ip, str(local_port)))
+print('-----------------Server starting success-----------------')
+
+
+def exe_prog(msg):
+         # La ruta consta de espacios y comillas muy bien -_- !!!!!
+    #os.system(u"\"C:\Program Files (x86)\TTPlayer\TTPlayer.exe\"".encode("gbk"))
+    os.system(msg)
+    # os.system("C:\ProgramData\Anaconda3\envs\py2\python.exe F:\\source_files\\quant\\remote_pc_control\\exe_calc.py")
+
+while 1:
+    conn, addr = server.accept()
+    msg = urllib.parse.unquote(conn.recv(1024).decode('utf-8'))
+    
+    peer_name = conn.getpeername()
+    sock_name = conn.getsockname()
+
+         # peer_name es una tupla, peer_name [0] es la ip y peer_name [1] es el número de puerto
+    now_dt = str(datetime.datetime.now())
+    print(u'%s, visitor: %s:%s'%(now_dt, peer_name[0],peer_name[1])) # , sock_name
+         # Llamada lista blanca, verificación de permisos de administrador
+    if peer_name[0] in admin_filter.keys():
+        print(msg)
+        if '"quit"' == msg: # puede ser 'quit' puede ser '"quit"' ... verifíquelo usted mismo
+            conn.close()
+            exit(0)
+        t = threading.Thread(target=exe_prog,args=(msg,))
+        t.start()
+
+    #conn.send('server: I received '+msg)
