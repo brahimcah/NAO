@@ -1,8 +1,7 @@
 # -*- encoding: UTF-8 -*-
 from naoqi import ALProxy
-l = open('hola.txt')
-print(type(l))
-
+fitxer = open('ip.txt')
+l = fitxer.readline()
 ls = l.encode('ascii','replsce')
 print(type(ls))
 
