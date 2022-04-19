@@ -7,6 +7,9 @@ import qi
 import argparse
 import sys
 
+fitxer = open('.\data\ip.txt')
+l = fitxer.readline()
+ip = l.encode('ascii','replsce')
 
 def main(session):
     """
@@ -20,8 +23,7 @@ def main(session):
     # Wake up robot
     motion_service.wakeUp()
 
-    # Send robot to Stand Init
-    posture_service.goToPosture("StandInit", 0.5)
+    #
 
     # Go to rest position
     motion_service.rest()
@@ -29,7 +31,7 @@ def main(session):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--ip", type=str, default="172.16.252.98",
+    parser.add_argument("--ip", type=str, default=ip,
                         help="Robot IP address. On robot or Local Naoqi: use '127.0.0.1'.")
     parser.add_argument("--port", type=int, default=9559,
                         help="Naoqi port number")

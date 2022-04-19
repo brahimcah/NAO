@@ -20,20 +20,23 @@ def Xarxa():
     return IP
 
 def Parlar():
-    #IP = iptxt.get("1.0", "end-1c")
-	l = Xarxa()
-	ls = l.encode('ascii','replsce')
-	print(type(ls))
-	print(ls)
-	tts = ALProxy("ALTextToSpeech",ls, 9559)
-	
+    
 	txt = inputtxt.get("1.0", "end-1c")
 	strtxt = txt.encode('ascii','replsce')
-	tts.say(strtxt)
+
+	ip = iptxt.get("1.0", "end-1c")
+	with open('.\data\ip.txt', 'w') as f:
+		f.write(ip)
+	with open('.\data\stext.txt', 'w') as f:
+		f.write(txt)
+	execfile(".\_talk\parlar.py")
     
 
 def Japan():
-	execfile(".\talk\japan.py")
+	ip = iptxt.get("1.0", "end-1c")
+	with open('.\data\ip.txt', 'w') as f:
+		f.write(ip)
+	execfile(".\_talk\japan.py")
 	
 
 
